@@ -1,6 +1,6 @@
 #! /bin/bash
 # Script name: cars.sh
-# Author: Your Name
+# Author: Rhys Lindhorst
 
 my_file="my_old_cars"
 touch "$my_file"
@@ -11,17 +11,17 @@ while true; do
     echo "2 - Display the list of cars"
     echo "3 - Quit"
 
-    # Read choice (works with redirected input too)
-    if ! read choice; then
+    # Read choice with -r to prevent backslash issues
+    if ! read -r choice; then
         echo "EOF reached. Exiting."
         break
     fi
 
     case $choice in
         1)
-            if ! read year; then break; fi
-            if ! read make; then break; fi
-            if ! read model; then break; fi
+            if ! read -r year; then break; fi
+            if ! read -r make; then break; fi
+            if ! read -r model; then break; fi
             echo "${year}:${make}:${model}" >> "$my_file"
             ;;
         2)
